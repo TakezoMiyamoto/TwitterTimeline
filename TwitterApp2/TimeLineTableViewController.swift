@@ -14,26 +14,6 @@ import SVProgressHUD
 import SnapKit
 
 
-class TweetCell: UITableViewCell {
-    
-    @IBOutlet weak var iconV: UIImageView!
-    @IBOutlet weak var userLb: UILabel!
-    @IBOutlet weak var tweetLb: UILabel!
-    @IBOutlet weak var favBtn: UIButton!
-    
-    
-    @IBAction func tapFavBtn(sender: UIButton) {
-        
-    }
-    
-    override func awakeFromNib() {
-        iconV.layer.cornerRadius = 5.0
-        iconV.layer.masksToBounds = true
-    }
-    
-    
-}
-
 
 class TimeLineTableViewController: UITableViewController {
     
@@ -43,12 +23,20 @@ class TimeLineTableViewController: UITableViewController {
     // 通信中のフラグ
     var isLoading = false
     
+    // リフレッシュのくるくる
+    var refreshUI = UIRefreshControl()
+    
+    
     
     // 初回に一度だけ呼ばれる
     override func viewDidLoad() {
         super.viewDidLoad()
         
         SVProgressHUD.show()
+        
+        refreshUI.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
+        tableView.addSubview(refreshUI)
+        
         
         // Changed Navigation Color
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
@@ -71,9 +59,18 @@ class TimeLineTableViewController: UITableViewController {
         
     }
     
+    func refresh() {
+        
+        isLoading = false
+//        tweetAr = []
+        requestTimeLine(isRefresh: true)
+       
+        
+    }
     
     
-    func requestTimeLine(parameters: [String: AnyObject] = [:]) {
+    
+    func requestTimeLine(parameters: [String: AnyObject] = [:], isRefresh:Bool = false) {
         
         if isLoading { // 通信中なら処理を行わない
             return
@@ -99,6 +96,11 @@ class TimeLineTableViewController: UITableViewController {
                 return
             }
             
+            // リフレッシュの際は配列を空にする!!!
+            if isRefresh {
+                self.tweetAr = []
+            }
+            
             let json = JSON(value)
             for tweetJSON in json.arrayValue {
                 let tweet = Tweet(json: tweetJSON)
@@ -109,6 +111,7 @@ class TimeLineTableViewController: UITableViewController {
             SVProgressHUD.dismiss()
             // テーブル表示を更新
             self.tableView.reloadData()
+            self.refreshUI.endRefreshing()
             
             self.isLoading = false
             
@@ -145,11 +148,7 @@ class TimeLineTableViewController: UITableViewController {
 
         }
         
-        let tweet = tweetAr[indexPath.row]
-        
-        cell.userLb.text = tweet.userName
-        cell.tweetLb.text = tweet.text
-        cell.iconV.sd_setImageWithURL(NSURL(string:tweet.userIcon ))
+        cell.setTweet(tweetAr[indexPath.row])
 
         return cell!
     }

@@ -19,6 +19,7 @@
 		B1782DB81C12651A00A5A449 /* TimeLineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1782DB71C12651A00A5A449 /* TimeLineTableViewController.swift */; };
 		B1E62C0B1C127EAA008EE853 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E62C0A1C127EAA008EE853 /* Util.swift */; };
 		B1E62C0D1C129A6B008EE853 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E62C0C1C129A6B008EE853 /* Tweet.swift */; };
+		B1E62C0F1C12CA1E008EE853 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E62C0E1C12CA1E008EE853 /* TweetCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		B1782DB71C12651A00A5A449 /* TimeLineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewController.swift; sourceTree = "<group>"; };
 		B1E62C0A1C127EAA008EE853 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		B1E62C0C1C129A6B008EE853 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		B1E62C0E1C12CA1E008EE853 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		D898B25932FB2FDE2449714F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 				B1E62C0C1C129A6B008EE853 /* Tweet.swift */,
 				B1782DB51C125EC000A5A449 /* TwitterManager.swift */,
 				B1782DB71C12651A00A5A449 /* TimeLineTableViewController.swift */,
+				B1E62C0E1C12CA1E008EE853 /* TweetCell.swift */,
 				B1782D891C125EAB00A5A449 /* ViewController.swift */,
 				B1E62C0A1C127EAA008EE853 /* Util.swift */,
 				B1782D8B1C125EAB00A5A449 /* Main.storyboard */,
@@ -344,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1782D8A1C125EAB00A5A449 /* ViewController.swift in Sources */,
+				B1E62C0F1C12CA1E008EE853 /* TweetCell.swift in Sources */,
 				B1782DB61C125EC000A5A449 /* TwitterManager.swift in Sources */,
 				B1E62C0B1C127EAA008EE853 /* Util.swift in Sources */,
 				B1E62C0D1C129A6B008EE853 /* Tweet.swift in Sources */,
