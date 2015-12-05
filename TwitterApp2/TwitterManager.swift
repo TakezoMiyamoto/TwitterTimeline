@@ -51,9 +51,9 @@ class TwitterManager{
     }
     
     
-    static func createRequest(urlString: String, method:SLRequestMethod, parameters: [String: AnyObject] = [:]) -> NSURLRequest {
+    static func createRequest(endpoint: String, method:SLRequestMethod, parameters: [String: AnyObject] = [:]) -> NSURLRequest {
         
-        let url = NSURL(string: urlString)
+        let url = NSURL(string: "https://api.twitter.com/1.1/\(endpoint)")
         let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: method, URL: url, parameters: parameters)
         
         // アカウント情報を付与します

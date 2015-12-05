@@ -22,7 +22,7 @@ class TweetCell: UITableViewCell {
     @IBAction func tapFavBtn(sender: UIButton) {
         guard let tweet = tweet else { return }
         
-        let request = TwitterManager.createRequest("https://api.twitter.com/1.1/favorites/create.json", method: .POST, parameters:["id":tweet.tweetID])
+        let request = TwitterManager.createRequest("favorites/create.json", method: .POST, parameters:["id":tweet.tweetID])
         
         Alamofire.request(request).responseJSON { (response) -> Void in
             

@@ -82,7 +82,7 @@ class TimeLineTableViewController: UITableViewController {
         // Twitter Managerを使って色々なTwitterAPIを使ってみる
 //        let request = TwitterManager.createRequest("https://api.twitter.com/1.1/statuses/home_timeline.json", method: .GET)
         
-        let request = TwitterManager.createRequest("https://api.twitter.com/1.1/statuses/home_timeline.json", method: .GET, parameters:parameters)
+        let request = TwitterManager.createRequest("statuses/home_timeline.json", method: .GET, parameters:parameters)
         
         Alamofire.request(request).responseJSON { (response) -> Void in
             
