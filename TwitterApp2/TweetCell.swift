@@ -8,23 +8,41 @@
 
 import UIKit
 import Alamofire
+import TTTAttributedLabel
 
 
-class TweetCell: UITableViewCell {
+
+class TweetCell: UITableViewCell, TTTAttributedLabelDelegate {
     
     @IBOutlet weak var iconV: UIImageView!
     @IBOutlet weak var userLb: UILabel!
-    @IBOutlet weak var tweetLb: UILabel!
+    @IBOutlet weak var tweetLb: TTTAttributedLabel!
     @IBOutlet weak var favBtn: UIButton!
     
     var tweet:Tweet?
     
     @IBAction func tapFavBtn(sender: UIButton) {
+        
         guard let tweet = tweet else { return }
         
-        let request = TwitterManager.createRequest("favorites/create.json", method: .POST, parameters:["id":tweet.tweetID])
+        // 連打対策
+        favBtn.userInteractionEnabled = false
+        
+        var endPoint = "favorites/create.json"
+        if tweet.favorited {
+            endPoint = "favorites/destroy.json"
+        }
+        
+        let request = TwitterManager.createRequest(endPoint, method: .POST, parameters:["id":tweet.tweetID])
         
         Alamofire.request(request).responseJSON { (response) -> Void in
+            
+            self.favBtn.userInteractionEnabled = true
+            
+            if let statusCode = response.response?.statusCode {
+                Util.responseCheck(statusCode)
+                
+            }
             
             if response.result.isSuccess {
                 tweet.favorited = !tweet.favorited // Booleの値を逆にします
@@ -47,6 +65,9 @@ class TweetCell: UITableViewCell {
         self.tweet = tweet
         
         userLb.text = tweet.userName
+        
+        tweetLb.delegate = self
+        tweetLb.enabledTextCheckingTypes = NSTextCheckingType.Link.rawValue
         tweetLb.text = tweet.text
         iconV.sd_setImageWithURL(NSURL(string:tweet.userIcon ))
         
@@ -63,6 +84,10 @@ class TweetCell: UITableViewCell {
             favBtn.setTitle("♡", forState: .Normal)
         }
         
+    }
+    
+    func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
+        UIApplication.sharedApplication().openURL(url)
     }
     
 }
