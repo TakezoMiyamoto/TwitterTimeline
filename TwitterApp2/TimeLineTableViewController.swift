@@ -34,11 +34,16 @@ class TweetCell: UITableViewCell {
     
 }
 
+
 class TimeLineTableViewController: UITableViewController {
     
     // Tweetクラスの配列
     var tweetAr:[Tweet] = []
 
+    // 通信中のフラグ
+    var isLoading = false
+    
+    
     // 初回に一度だけ呼ばれる
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +55,8 @@ class TimeLineTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController?.navigationBar.barTintColor = UIColor.hexStr("#39B9A1", alpha: 1)
         
-        
+        // ログイン
         TwitterManager.login { (account) -> Void in
-            
 
             guard let _ = account else {
                 // エラー表示
@@ -69,12 +73,28 @@ class TimeLineTableViewController: UITableViewController {
     
     
     
-    func requestTimeLine() {
+    func requestTimeLine(parameters: [String: AnyObject] = [:]) {
+        
+        if isLoading { // 通信中なら処理を行わない
+            return
+        }
+        
+        isLoading = true
+        
         
         // Twitter Managerを使って色々なTwitterAPIを使ってみる
-        let request = TwitterManager.createRequest("https://api.twitter.com/1.1/statuses/home_timeline.json", method: .GET)
+//        let request = TwitterManager.createRequest("https://api.twitter.com/1.1/statuses/home_timeline.json", method: .GET)
+        
+        let request = TwitterManager.createRequest("https://api.twitter.com/1.1/statuses/home_timeline.json", method: .GET, parameters:parameters)
         
         Alamofire.request(request).responseJSON { (response) -> Void in
+            
+            // ステータスコードをチェック
+            if let statusCode = response.response?.statusCode {
+                Util.responseCheck(statusCode)
+            }
+            
+            // 値チェック
             guard let value = response.result.value else {
                 return
             }
@@ -85,8 +105,13 @@ class TimeLineTableViewController: UITableViewController {
                 self.tweetAr.append(tweet)
                 
             }
+            
             SVProgressHUD.dismiss()
+            // テーブル表示を更新
             self.tableView.reloadData()
+            
+            self.isLoading = false
+            
         }
     }
 
@@ -107,7 +132,7 @@ class TimeLineTableViewController: UITableViewController {
         return tweetAr.count
     }
 
-    //
+    // セルの表示
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell: TweetCell!
@@ -125,58 +150,29 @@ class TimeLineTableViewController: UITableViewController {
         cell.userLb.text = tweet.userName
         cell.tweetLb.text = tweet.text
         cell.iconV.sd_setImageWithURL(NSURL(string:tweet.userIcon ))
-        
-        
-        
-        
+
         return cell!
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    // 実際の表示よりもちょっと早いイベント
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // 以下で昔のTweetを読み込んでる
+        if tweetAr.count - indexPath.row < 5 {
+            
+            // tweetArの最後のデータを取り出して
+            // tweetIDがInt型になるかをチェックします
+            if let tweet = tweetAr.last,
+                let tweetID = Int64(tweet.tweetID) {
+                    
+                    let max_id = tweetID - 1 // tweetIDから1を引く仕様なので、従う
+                    requestTimeLine(["max_id": "\(max_id)"])
+            }
+        }
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
 
