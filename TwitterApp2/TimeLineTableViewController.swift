@@ -150,7 +150,7 @@ class TimeLineTableViewController: UITableViewController {
         
         cell.setTweet(tweetAr[indexPath.row])
 
-        return cell!
+        return cell
     }
     
     

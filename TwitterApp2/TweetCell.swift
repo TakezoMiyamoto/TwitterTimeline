@@ -16,10 +16,13 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetLb: UILabel!
     @IBOutlet weak var favBtn: UIButton!
     
+    var tweet:Tweet?
     
     @IBAction func tapFavBtn(sender: UIButton) {
+        guard let tweet = tweet else { return }
         
-        sender.setTitle("♥", forState: .Normal)
+        tweet.favorited = !tweet.favorited // Booleの値を逆にします
+        updateFavBtn()
         
     }
     
@@ -31,9 +34,24 @@ class TweetCell: UITableViewCell {
     
     func setTweet(tweet:Tweet) {
         
+        self.tweet = tweet
+        
         userLb.text = tweet.userName
         tweetLb.text = tweet.text
         iconV.sd_setImageWithURL(NSURL(string:tweet.userIcon ))
+        
+        updateFavBtn()
+    }
+    
+    func updateFavBtn() {
+        
+        guard let tweet = tweet else { return }
+        
+        if tweet.favorited {
+            favBtn.setTitle("♥", forState: .Normal)
+        } else {
+            favBtn.setTitle("♡", forState: .Normal)
+        }
         
     }
     

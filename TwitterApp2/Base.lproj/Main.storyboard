@@ -66,16 +66,15 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dts-af-lxE">
-                                            <rect key="frame" x="260" y="98.5" width="50" height="41"/>
+                                            <rect key="frame" x="260" y="103.5" width="50" height="36"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="3IF-j3-5Bm"/>
                                                 <constraint firstAttribute="width" constant="50" id="c6j-jM-dTf"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                            <state key="normal" title="★">
-                                                <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <state key="normal" title="♡">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="tapFavBtn:" destination="epd-xt-dc9" eventType="touchUpInside" id="GE1-os-czz"/>
@@ -145,16 +144,15 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rL-47-TgA">
-                                            <rect key="frame" x="10" y="98.5" width="50" height="41"/>
+                                            <rect key="frame" x="10" y="103.5" width="50" height="36"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="fa5-Ea-Y4K"/>
                                                 <constraint firstAttribute="width" constant="50" id="ku2-Ip-oaa"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                            <state key="normal" title="★">
-                                                <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <state key="normal" title="♡">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="tapFavBtn:" destination="4P7-tf-O34" eventType="touchUpInside" id="jS3-CV-2ZV"/>
