@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 
 class TweetCell: UITableViewCell {
@@ -21,8 +22,17 @@ class TweetCell: UITableViewCell {
     @IBAction func tapFavBtn(sender: UIButton) {
         guard let tweet = tweet else { return }
         
-        tweet.favorited = !tweet.favorited // Booleの値を逆にします
-        updateFavBtn()
+        let request = TwitterManager.createRequest("https://api.twitter.com/1.1/favorites/create.json", method: .POST, parameters:["id":tweet.tweetID])
+        
+        Alamofire.request(request).responseJSON { (response) -> Void in
+            
+            if response.result.isSuccess {
+                tweet.favorited = !tweet.favorited // Booleの値を逆にします
+                self.updateFavBtn()
+            }
+        }
+        
+        
         
     }
     
