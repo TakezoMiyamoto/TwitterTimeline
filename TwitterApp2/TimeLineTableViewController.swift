@@ -26,7 +26,10 @@ class TimeLineTableViewController: UITableViewController {
     // リフレッシュのくるくる
     var refreshUI = UIRefreshControl()
     
-    
+    // 画面が表示される際にテーブルを表示を更新します
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
     
     // 初回に一度だけ呼ばれる
     override func viewDidLoad() {
