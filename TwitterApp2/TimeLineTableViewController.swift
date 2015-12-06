@@ -12,6 +12,8 @@ import SwiftyJSON
 import SDWebImage
 import SVProgressHUD
 import SnapKit
+import Social
+import Accounts
 
 
 
@@ -120,6 +122,19 @@ class TimeLineTableViewController: UITableViewController {
             
         }
     }
+    
+    
+    
+    @IBAction func tapTweetBtn(sender: UIBarButtonItem) {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+            let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            vc.setInitialText("Let's Tweet!!")
+            presentViewController(vc, animated: true, completion: nil)
+        }
+        
+    }
+    
+    
 
     
     // MARK: - Table view data source
@@ -164,7 +179,7 @@ class TimeLineTableViewController: UITableViewController {
         if tweetAr.count - indexPath.row < 5 {
             
             // tweetArの最後のデータを取り出して
-            // tweetIDがInt型になるかをチェックします
+            // tweetIDがInt型になるかをチェック
             if let tweet = tweetAr.last,
                 let tweetID = Int64(tweet.tweetID) {
                     

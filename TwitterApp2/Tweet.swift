@@ -19,7 +19,7 @@ class Tweet {
     var userName = ""       //user:name
     //投稿者アイコン
     var userIcon = ""       //user:profile_image_url_https
-    //投稿の画像(ない時もあります)
+    //投稿の画像(ない時もありる)
     var image = ""          //extended_entities:media:0:media_url_https
     //リツイート数
     var retweetCount = 0    //retweet_count

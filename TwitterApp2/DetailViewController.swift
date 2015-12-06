@@ -39,6 +39,7 @@ class DetailViewController: UIViewController, TTTAttributedLabelDelegate {
 
         userName.text = tweet.userName
         retweet.text = "リツイート数: \(tweet.retweetCount)"
+        favCount.text = "ファボ数: \(tweet.favoriteCount)"
         
         tweetLb.delegate = self
         tweetLb.enabledTextCheckingTypes = NSTextCheckingType.Link.rawValue
@@ -48,12 +49,14 @@ class DetailViewController: UIViewController, TTTAttributedLabelDelegate {
         iconV.layer.cornerRadius = 5.0
         iconV.layer.masksToBounds = true
         
+        // コンテンツ画像が空文字の場合
         if tweet.image == ""{
-            detailImageView.snp_makeConstraints(closure: { (make) -> Void in
-                make.height.equalTo(0)
+            detailImageView.snp_remakeConstraints(closure: { (make) -> Void in
+                make.height.equalTo(0) // 画像の高さを0にして画像の高さを詰める
             })
             
         }else{
+            //空文字じゃない場合
             detailImageView.sd_setImageWithURL(NSURL(string: tweet.image))
             
         }
