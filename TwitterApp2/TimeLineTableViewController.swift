@@ -135,7 +135,7 @@ class TimeLineTableViewController: UITableViewController {
         return tweetAr.count
     }
 
-    // セルの表示
+    // 各IndexPathごとのCellを作成
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell: TweetCell!
@@ -171,9 +171,12 @@ class TimeLineTableViewController: UITableViewController {
         }
     }
     
+    // セルをタップした際に画面遷移をする
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let vc = storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as? DetailViewController {
-//            vc.tweet = self.tweetAr[indexPath.row]
+            
+            // 詳細画面にTweetデータをわたす
+            vc.tweet = self.tweetAr[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
             
         }

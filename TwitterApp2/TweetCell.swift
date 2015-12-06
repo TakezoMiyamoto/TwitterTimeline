@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import TTTAttributedLabel
+import SDWebImage
 
 
 
