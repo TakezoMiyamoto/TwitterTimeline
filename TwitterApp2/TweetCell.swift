@@ -66,9 +66,11 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate {
         
         userLb.text = tweet.userName
         
+        // TTTAttributedLabel関連
         tweetLb.delegate = self
         tweetLb.enabledTextCheckingTypes = NSTextCheckingType.Link.rawValue
         tweetLb.text = tweet.text
+        
         iconV.sd_setImageWithURL(NSURL(string:tweet.userIcon ))
         
         updateFavBtn()
@@ -86,6 +88,7 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate {
         
     }
     
+    // TTTAttributedLabel openURL リンクタップのデリゲートイベント
     func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
         UIApplication.sharedApplication().openURL(url)
     }

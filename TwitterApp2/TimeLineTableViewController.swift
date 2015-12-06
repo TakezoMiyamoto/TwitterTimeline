@@ -170,6 +170,15 @@ class TimeLineTableViewController: UITableViewController {
             }
         }
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let vc = storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as? DetailViewController {
+//            vc.tweet = self.tweetAr[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+
+    }
 
     
 
