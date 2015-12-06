@@ -65,7 +65,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dts-af-lxE">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dts-af-lxE" customClass="FavButton" customModule="TwitterApp2" customModuleProvider="target">
                                             <rect key="frame" x="260" y="103.5" width="50" height="36"/>
                                             <animations/>
                                             <constraints>
@@ -143,7 +143,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rL-47-TgA">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rL-47-TgA" customClass="FavButton" customModule="TwitterApp2" customModuleProvider="target">
                                             <rect key="frame" x="10" y="103.5" width="50" height="36"/>
                                             <animations/>
                                             <constraints>
@@ -217,7 +217,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-5a-cMf">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="404"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-d2-ds4">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-d2-ds4" customClass="FavButton" customModule="TwitterApp2" customModuleProvider="target">
                                                 <rect key="frame" x="262" y="99" width="50" height="36"/>
                                                 <animations/>
                                                 <constraints>
@@ -228,6 +228,9 @@
                                                 <state key="normal" title="♡">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="tapFavBtn:" destination="O9v-mq-Ll1" eventType="touchUpInside" id="Ab9-bx-NBD"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ファボ数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdm-it-7K6">
                                                 <rect key="frame" x="101" y="76" width="211" height="21"/>
@@ -339,6 +342,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="detailImageView" destination="ImX-nS-Ilu" id="HCO-Re-aks"/>
+                        <outlet property="favBtn" destination="nc8-d2-ds4" id="cra-Pa-2or"/>
                         <outlet property="favCount" destination="gdm-it-7K6" id="aBo-dK-CbN"/>
                         <outlet property="iconV" destination="mhf-kG-0vc" id="zrp-kF-y6j"/>
                         <outlet property="retweet" destination="Sil-3e-Y5U" id="3Sr-IC-0Uz"/>

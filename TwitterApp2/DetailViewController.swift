@@ -20,6 +20,7 @@ class DetailViewController: UIViewController, TTTAttributedLabelDelegate {
     @IBOutlet weak var tweetLb: TTTAttributedLabel!
     @IBOutlet weak var iconV: UIImageView!
     @IBOutlet weak var detailImageView: UIImageView!
+    @IBOutlet weak var favBtn: FavButton!
     
     
     override func viewDidLoad() {
@@ -56,8 +57,16 @@ class DetailViewController: UIViewController, TTTAttributedLabelDelegate {
             detailImageView.sd_setImageWithURL(NSURL(string: tweet.image))
             
         }
+        
+        favBtn.updateFavBtn(tweet)
 
     }
+    
+    @IBAction func tapFavBtn(sender: FavButton) {
+        
+        favBtn.tapFavBton()
+    }
+    
     
 
 }

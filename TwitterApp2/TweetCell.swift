@@ -18,40 +18,12 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate {
     @IBOutlet weak var iconV: UIImageView!
     @IBOutlet weak var userLb: UILabel!
     @IBOutlet weak var tweetLb: TTTAttributedLabel!
-    @IBOutlet weak var favBtn: UIButton!
+    @IBOutlet weak var favBtn: FavButton!
     
     var tweet:Tweet?
     
     @IBAction func tapFavBtn(sender: UIButton) {
-        
-        guard let tweet = tweet else { return }
-        
-        // 連打対策
-        favBtn.userInteractionEnabled = false
-        
-        var endPoint = "favorites/create.json"
-        if tweet.favorited {
-            endPoint = "favorites/destroy.json"
-        }
-        
-        let request = TwitterManager.createRequest(endPoint, method: .POST, parameters:["id":tweet.tweetID])
-        
-        Alamofire.request(request).responseJSON { (response) -> Void in
-            
-            self.favBtn.userInteractionEnabled = true
-            
-            if let statusCode = response.response?.statusCode {
-                Util.responseCheck(statusCode)
-                
-            }
-            
-            if response.result.isSuccess {
-                tweet.favorited = !tweet.favorited // Booleの値を逆にします
-                self.updateFavBtn()
-            }
-        }
-        
-        
+        favBtn.tapFavBton() //タップした時は、TwitterAPIへのアクセス
         
     }
     
@@ -74,21 +46,11 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate {
         
         iconV.sd_setImageWithURL(NSURL(string:tweet.userIcon ))
         
-        updateFavBtn()
-    }
-    
-    func updateFavBtn() {
-        
-        guard let tweet = tweet else { return }
-        
-        if tweet.favorited {
-            favBtn.setTitle("♥", forState: .Normal)
-        } else {
-            favBtn.setTitle("♡", forState: .Normal)
-        }
+        favBtn.updateFavBtn(tweet)
         
     }
     
+        
     // TTTAttributedLabel openURL リンクタップのデリゲートイベント
     func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
         UIApplication.sharedApplication().openURL(url)
