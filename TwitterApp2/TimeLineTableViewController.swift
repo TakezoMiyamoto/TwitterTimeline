@@ -53,7 +53,7 @@ class TimeLineTableViewController: UITableViewController {
 
             guard let _ = account else {
                 // エラー表示
-                Util.showError("アカウントがありません") //アクセス権などのエラー内容は省略しています
+                Util.showError("アカウントがありません") //アクセス権などのエラー内容今は省略
                 return
             }
             // ログイン成功時

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4DF976649290B66669BC29AA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D297B879D64ED07B872AA2D /* Pods.framework */; };
+		B137657D1C1463E8000C0F25 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = B137657A1C1463E8000C0F25 /* iTunesArtwork.png */; };
+		B137657E1C1463E8000C0F25 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B137657B1C1463E8000C0F25 /* iTunesArtwork@2x.png */; };
+		B137657F1C1463E8000C0F25 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B137657C1C1463E8000C0F25 /* placeholder.png */; };
 		B1590C161C13AD0B009047C3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1590C151C13AD0B009047C3 /* DetailViewController.swift */; };
 		B1590C181C13CC79009047C3 /* FavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1590C171C13CC79009047C3 /* FavButton.swift */; };
 		B1782D881C125EAB00A5A449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1782D871C125EAB00A5A449 /* AppDelegate.swift */; };
@@ -44,6 +47,9 @@
 /* Begin PBXFileReference section */
 		4D297B879D64ED07B872AA2D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7709F537F047C32737EE1010 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B137657A1C1463E8000C0F25 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		B137657B1C1463E8000C0F25 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		B137657C1C1463E8000C0F25 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		B1590C151C13AD0B009047C3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B1590C171C13CC79009047C3 /* FavButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavButton.swift; sourceTree = "<group>"; };
 		B1782D841C125EAB00A5A449 /* TwitterApp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterApp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +116,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B13765791C1463E8000C0F25 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				B137657B1C1463E8000C0F25 /* iTunesArtwork@2x.png */,
+				B137657A1C1463E8000C0F25 /* iTunesArtwork.png */,
+				B137657C1C1463E8000C0F25 /* placeholder.png */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
 		B1782D7B1C125EAB00A5A449 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +151,7 @@
 		B1782D861C125EAB00A5A449 /* TwitterApp2 */ = {
 			isa = PBXGroup;
 			children = (
+				B13765791C1463E8000C0F25 /* image */,
 				B1782D871C125EAB00A5A449 /* AppDelegate.swift */,
 				B1E62C0C1C129A6B008EE853 /* Tweet.swift */,
 				B1782DB51C125EC000A5A449 /* TwitterManager.swift */,
@@ -278,7 +295,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1782D921C125EAB00A5A449 /* LaunchScreen.storyboard in Resources */,
+				B137657F1C1463E8000C0F25 /* placeholder.png in Resources */,
+				B137657E1C1463E8000C0F25 /* iTunesArtwork@2x.png in Resources */,
 				B1782D8F1C125EAB00A5A449 /* Assets.xcassets in Resources */,
+				B137657D1C1463E8000C0F25 /* iTunesArtwork.png in Resources */,
 				B1782D8D1C125EAB00A5A449 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

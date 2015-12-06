@@ -37,6 +37,7 @@ class DetailViewController: UIViewController, TTTAttributedLabelDelegate {
             return
         }
 
+        
         userName.text = tweet.userName
         retweet.text = "リツイート数: \(tweet.retweetCount)"
         favCount.text = "ファボ数: \(tweet.favoriteCount)"
