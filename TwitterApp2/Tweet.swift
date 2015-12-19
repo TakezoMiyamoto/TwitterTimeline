@@ -1,9 +1,9 @@
 //
 //  Tweet.swift
-//  TwitterApp
+//  TwitterApp2
 //
-//  Created by 横山卓也 on 2015/11/29.
-//  Copyright © 2015年 yokoyama. All rights reserved.
+//  Created by 宮本武蔵 on 2015/12/05.
+//  Copyright © 2015年 Takezo. All rights reserved.
 //
 
 import Foundation

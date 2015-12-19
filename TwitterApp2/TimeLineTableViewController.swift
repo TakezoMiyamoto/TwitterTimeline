@@ -4,7 +4,7 @@
 //
 //  Created by 宮本武蔵 on 2015/12/05.
 //  Copyright © 2015年 Takezo. All rights reserved.
-//
+// test
 
 import UIKit
 import Alamofire
@@ -28,12 +28,12 @@ class TimeLineTableViewController: UITableViewController {
     // リフレッシュのくるくる
     var refreshUI = UIRefreshControl()
     
-    // 画面が表示される際にテーブルを表示を更新します
+    // 画面が表示される際にテーブルを表示を更新
     override func viewWillAppear(animated: Bool) {
         tableView.reloadData()
     }
     
-    // 初回に一度だけ呼ばれる
+    // 初回に一度だけ呼ぶ
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +46,7 @@ class TimeLineTableViewController: UITableViewController {
         // Changed Navigation Color
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        navigationController?.navigationBar.barTintColor = UIColor.hexStr("#39B9A1", alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor.hexStr("#00aced", alpha: 1)
         
         // ログイン
         TwitterManager.login { (account) -> Void in
@@ -140,7 +140,7 @@ class TimeLineTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     
-    // Tableのセクションの数 セクションは何個？と聞かれます。
+    // Tableのセクションの数 セクションは何個？
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
